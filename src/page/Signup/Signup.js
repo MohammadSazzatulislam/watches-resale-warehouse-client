@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Signup = () => {
   const {
@@ -9,10 +10,17 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  //   const { newUserSignUp, upDateUserprofile } = useContext(AuthContext);
+    const { createNewUser, upDateUserProfile } = useContext(AuthContext);
 
-  const handleSignup = (data) => {};
+    const handleSignup = (data) => {
+      
+  };
 
+
+
+
+
+    
   return (
     <section className="h-screen">
       <div className="px-6 h-full text-gray-800">

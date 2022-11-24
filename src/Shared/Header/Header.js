@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../../src/Images/favicon.jpg';
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Header = () => {
   const [show, setshow] = useState(false);
-//   const { user, signOutUser } = useContext(UserContext);
+  const { user, signOutUser } = useContext(AuthContext);
 
   return (
     <div>
