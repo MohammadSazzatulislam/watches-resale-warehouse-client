@@ -10,8 +10,8 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 
 const Banner = () => {
   return (
-    <div className="2xl:mx-auto 2xl:container h-[500px] flex justify-center">
-      <div className="2xl:px-20 w-full h-[500px] ">
+    <div className="2xl:mx-auto 2xl:container w-full mx-auto h-[500px] flex justify-center">
+      <div className=" w-full h-[500px] ">
         {/* Carousel for Small-Sized Screen */}
         <CarouselProvider
           className="relative block sm:hidden"
