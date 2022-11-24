@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ProductsCard = ({ category }) => {
   return (
-    <Link to={`/category/${category.categoryId}`}>
+    <Link to={`/allCategory/${category.name}`}>
       <div className=" w-full p-4  rounded border hover:shadow-lg">
         <div className="flex justify-center items-center flex-col ">
           <img className="w-full h-60 rounded" src={category.img} alt="" />
