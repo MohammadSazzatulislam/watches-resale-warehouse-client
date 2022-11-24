@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Login = () => {
   const {
@@ -9,9 +10,20 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  //   const { logInUser } = useContext(AuthContext);
+    const { logInUser } = useContext(AuthContext);
 
-  const handlelogin = (data) => {};
+    const handlelogin = (data) => {
+      logInUser(data.email, data.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+         console.log(user);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
+  };
 
   return (
     <section className="h-screen">
@@ -63,7 +75,7 @@ const Login = () => {
                   />
                   <label
                     className="form-check-label inline-block text-gray-800"
-                    for="exampleCheck2"
+                    htmlFor="exampleCheck2"
                   >
                     Remember me
                   </label>

@@ -10,17 +10,27 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-    const { createNewUser, upDateUserProfile } = useContext(AuthContext);
+  const { createNewUser, upDateUserProfile } = useContext(AuthContext);
 
-    const handleSignup = (data) => {
-      
+  const handleSignup = (data) => {
+    createNewUser(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        upDateUserProfile(data.name, data.photoURL)
+          .then(() => {
+          console.log(user);
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
-
-
-
-
-    
   return (
     <section className="h-screen">
       <div className="px-6 h-full text-gray-800">
@@ -45,6 +55,17 @@ const Signup = () => {
                   placeholder="Your Name"
                 />
                 {errors.name && <span>{errors.name.message}</span>}
+              </div>
+              <div className="mb-6">
+                <p className="text-sm">PhotoURL</p>
+                <input
+                  {...register("photoURL")}
+                  type="text"
+                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="exampleFormControlInput2"
+                  placeholder="photoURL"
+                />
+                {errors.photoURL && <span>{errors.photoURL.message}</span>}
               </div>
               {/* <!-- Email input --> */}
               <div className="mb-6">
@@ -81,7 +102,7 @@ const Signup = () => {
                   />
                   <label
                     className="form-check-label inline-block text-gray-800"
-                    for="exampleCheck2"
+                    htmlFor="exampleCheck2"
                   >
                     Remember me
                   </label>

@@ -2,10 +2,21 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../../src/Images/favicon.jpg';
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const [show, setshow] = useState(false);
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+       console.log(error.messages);
+      });
+  }
 
   return (
     <div>
@@ -28,7 +39,7 @@ const Header = () => {
               <Link to="/dashboard"> Dashboard</Link>
             </div>
 
-            {/* <div className="hidden sm:flex flex-row justify-center items-center space-x-4">
+            <div className="hidden sm:flex flex-row justify-center items-center space-x-4">
               {user?.uid ? (
                 <>
                   {user?.photoURL ? (
@@ -56,14 +67,14 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/signin">
+                  <Link to="/login">
                     <button className="rounded-md flex space-x-2 w-24 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">
-                      Sign In
+                      Log In
                     </button>
                   </Link>
                 </>
               )}
-            </div> */}
+            </div>
             {/* Burger Icon */}
             <div
               id="bgIcon"
@@ -137,7 +148,7 @@ const Header = () => {
               <Link to="/blog">Blog</Link>
               <Link to="/dashboard"> Dashboard</Link>
             </div>
-            {/* <div className="flex flex-col gap-4 mt-4 w-80  ">
+            <div className="flex flex-col gap-4 mt-4 w-80  ">
               {user?.uid ? (
                 <>
                   {user?.photoURL ? (
@@ -165,14 +176,14 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/signin">
+                  <Link to="/login">
                     <button className="rounded-md flex space-x-2 w-20 h-10 font-normal text-sm leading-3 text-white bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-600 hover:bg-indigo-600 duration-150 justify-center items-center">
-                      Sign In
+                      Log In
                     </button>
                   </Link>
                 </>
               )}
-            </div> */}
+            </div>
           </div>
         </nav>
       </div>
