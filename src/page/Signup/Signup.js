@@ -37,9 +37,7 @@ const Signup = () => {
 
   const userInfo = (name, email, option) => {
     const users = {
-      userName: name,
-      userEmail: email,
-      selectOption: option
+      name, email , option
     }
 
     fetch("http://localhost:5000/users", {

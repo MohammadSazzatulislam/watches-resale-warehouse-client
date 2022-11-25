@@ -10,10 +10,12 @@ import useBuyer from "../Hooks/useBuyer/useBuyer";
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
 
-  const [isSeller] = useSeller(user?.email);
-  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller, isSellerLoading] = useSeller(user?.email);
+  const [isBuyers, isBuyerLoading] = useBuyer(user?.email);
 
-
+  if (isSellerLoading || isBuyerLoading) {
+    return <Loading></Loading>
+  }
     return (
       <div>
         <Header></Header>
@@ -39,7 +41,7 @@ const DashboardLayout = () => {
             ></label>
             <ul className="menu p-4 w-80 bg-base-100 text-base-content">
               {/* <!-- Sidebar content here --> */}
-              {isBuyer && (
+              {isBuyers && (
                 <>
                   <li>
                     <Link to="/dashboard">My Orders</Link>

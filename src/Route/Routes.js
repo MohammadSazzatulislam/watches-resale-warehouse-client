@@ -56,43 +56,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: (
-          <BuyerRoute>
-            <MyOrder></MyOrder>
-          </BuyerRoute>
-        ),
+        element: <MyOrder></MyOrder>,
       },
       {
         path: "dashboard/myWishList",
-        element: (
-          <BuyerRoute>
-            <MyWishList></MyWishList>
-          </BuyerRoute>
-        ),
+        element: <MyWishList></MyWishList>,
       },
       {
         path: "/dashboard/addAProduct",
-        element: (
-          <SellerRoute>
-            <AddAProduct></AddAProduct>
-          </SellerRoute>
-        ),
+        element: <AddAProduct></AddAProduct>,
       },
       {
         path: "/dashboard/myProduct",
-        element: (
-          <SellerRoute>
-            <MyProduct></MyProduct>
-          </SellerRoute>
-        ),
+        element: <MyProduct></MyProduct>,
       },
       {
         path: "/dashboard/myBuyers",
-        element: (
-          <SellerRoute>
-            <MyBuyer></MyBuyer>
-          </SellerRoute>
-        ),
+        element: <MyBuyer></MyBuyer>,
       },
     ],
   },

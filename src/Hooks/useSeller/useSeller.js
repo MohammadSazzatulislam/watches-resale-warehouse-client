@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 const useSeller = (email) => {
-  const [isSeller, setIsSeller] = useState(false);
   const [isSellerLoading, setIsSellerLoading] = useState(true);
+  const [isSeller, setIsSeller] = useState(false);
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/seller/${email}}`)
+      fetch(`http://localhost:5000/users/${email}`)
         .then((res) => res.json())
         .then((data) => {
-            setIsSeller(data.isSeller);
-            setIsSellerLoading(false);
-        })
-        .catch((err) => console.log(err.message));
+          setIsSeller(data.isSeller);
+          setIsSellerLoading(false);
+        });
     }
   }, [email]);
   return [isSeller, isSellerLoading];

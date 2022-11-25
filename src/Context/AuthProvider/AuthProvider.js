@@ -15,22 +15,21 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
-       const [show, setshow_modal_XIV] = useState(false);
 
   // create new user
   const createNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
-    };
-    
-    // update profile name
-    const upDateUserProfile =( name, phote) => {
-        setLoading(true)
-        return updateProfile(auth.currentUser, {
-          displayName: name,
-          photoURL: phote,
-        });
-    }
+  };
+
+  // update profile name
+  const upDateUserProfile = (name, phote) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: phote,
+    });
+  };
 
   // logInUser
   const logInUser = (email, password) => {
@@ -61,8 +60,6 @@ const AuthProvider = ({ children }) => {
     logInUser,
     logOutUser,
     upDateUserProfile,
-    show,
-    setshow_modal_XIV,
   };
 
   return (
