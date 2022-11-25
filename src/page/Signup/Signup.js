@@ -10,18 +10,18 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-    const { createNewUser, upDateUserProfile } = useContext(AuthContext);
-    const [signError, setSignError] = useState('')
+  const { createNewUser, upDateUserProfile } = useContext(AuthContext);
+  const [signError, setSignError] = useState("");
 
-    const handleSignup = (data) => {
-      setSignError('')
+  const handleSignup = (data) => {
+    setSignError("");
     createNewUser(data.email, data.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         upDateUserProfile(data.name, data.photoURL)
           .then(() => {
-          console.log(user);
+            console.log(user);
           })
           .catch((error) => {
             // An error occurred
@@ -29,9 +29,14 @@ const Signup = () => {
           });
       })
       .catch((error) => {
-        setSignError(error.message)
+        setSignError(error.message);
       });
   };
+
+
+  const 
+
+
 
   return (
     <section className="h-[900px] lg:h-screen mb-20 md:h-[1000px]">
@@ -96,6 +101,16 @@ const Signup = () => {
                 {signError && (
                   <span className="text-sm text-red-500">{signError}</span>
                 )}
+              </div>
+              <div className="mb-6">
+                <p className="text-sm">Creates a seller account ??</p>
+                <select
+                  {...register("selectOption")}
+                  className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                >
+                  <option>Seller</option>
+                  <option selected>Buyers</option>
+                </select>
               </div>
 
               <div className="flex justify-between items-center mb-6">
