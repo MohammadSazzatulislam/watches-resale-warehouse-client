@@ -29,9 +29,6 @@ const AllProductCard = ({ product, setModalData }) => {
             <p className="text-gray-700 font-semibold mb-4">
               Seller Name : {product.sellerName}
             </p>
-            <p className="text-gray-700 font-semibold mb-4">
-              Location : {product.location}
-            </p>
           </div>
           <label
             onClick={() => setModalData(product)}

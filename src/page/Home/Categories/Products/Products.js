@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../../Components/Loading/Loading";
 import ProductsCard from "../ProductsCard/ProductsCard";
 

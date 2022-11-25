@@ -9,21 +9,34 @@ const Modal = ({ modalData, setModalData }) => {
     formState: { errors },
   } = useForm();
 
-  const { logInUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const handleBooked = (data) => {
     const modalInfo = {
       productName: modalData?.productName,
       userName: data.name,
       userEmail: data.email,
-      productPrice: data.price,
+      sellPrice: data.price,
       phone: data.phone,
-      location: data.location
+      location: data.location,
     };
+
+    fetch("http://localhost:5000/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(modalInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err.message));
+    
     console.log(modalInfo);
 
-    
-    setModalData(null)
+    setModalData(null);
   };
 
   return (
@@ -47,7 +60,7 @@ const Modal = ({ modalData, setModalData }) => {
               <input
                 {...register("name")}
                 type="text"
-                defaultValue={logInUser?.displayName}
+                defaultValue={user?.displayName}
                 readOnly
                 className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 id="exampleFormControlInput2"
@@ -62,7 +75,7 @@ const Modal = ({ modalData, setModalData }) => {
                 {...register("email")}
                 type="email"
                 readOnly
-                defaultValue={logInUser?.email}
+                defaultValue={user?.email}
                 className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 id="exampleFormControlInput2"
                 placeholder="Email address"

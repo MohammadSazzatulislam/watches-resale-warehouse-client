@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 
 const DashboardLayout = () => {
@@ -7,8 +7,12 @@ const DashboardLayout = () => {
     <div>
       <Header></Header>
       <div className="drawer drawer-mobile">
-        <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <input
+          id="dashboard-drawer"
+          type="checkbox"
+          className="drawer-toggle"
+        />
+        <div className="drawer-content">
           <Outlet></Outlet>
           <label
             htmlFor="dashboard-drawer"
@@ -22,10 +26,10 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <a>Sidebar Item 1</a>
+              <Link to="/dashboard">My Orders</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to="dashboard/myWishList">My WishList</Link>
             </li>
           </ul>
         </div>
