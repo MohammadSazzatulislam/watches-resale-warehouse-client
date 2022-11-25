@@ -6,15 +6,18 @@ import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 import Loading from "../Components/Loading/Loading";
 import useSeller from "../Hooks/useSeller/useSeller";
 import useBuyer from "../Hooks/useBuyer/useBuyer";
+import useAdmin from "../Hooks/useAdmin/useAdmin";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
 
   const [isSeller, isSellerLoading] = useSeller(user?.email);
   const [isBuyers, isBuyerLoading] = useBuyer(user?.email);
+  const[isAdmins, isAdminLoading] = useAdmin(user?.email);
 
-  if (isSellerLoading || isBuyerLoading) {
-    return <Loading></Loading>
+
+  if (isSellerLoading || isBuyerLoading || isAdminLoading) {
+    return <Loading></Loading>;
   }
     return (
       <div>
@@ -61,6 +64,16 @@ const DashboardLayout = () => {
                   </li>
                   <li>
                     <Link to="/dashboard/myBuyers">My Buyer</Link>
+                  </li>
+                </>
+              )}
+              {isAdmins && (
+                <>
+                  <li>
+                    <Link to="/dashboard/allBuyers">All Buyers</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/allSellers">All Sellers</Link>
                   </li>
                 </>
               )}

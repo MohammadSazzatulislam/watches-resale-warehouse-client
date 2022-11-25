@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
 const useAdmin = (email) => {
-   const [isAdmin, setIsAdmin] = useState(false);
-   const [isAdminLoading, setIsAdminLoading] = useState(true);
+  const [isAdminLoading, setIsAdminLoading] = useState(true);
+   const [isAdmins, setIsAdmin] = useState(false);
 
    useEffect(() => {
      if (email) {
-       fetch(
-         `https://doctors-portal-server-khaki.vercel.app/users/admin/${email}`
-       )
+       fetch(`http://localhost:5000/users/${email}`)
          .then((res) => res.json())
          .then((data) => {
            setIsAdmin(data.isAdmin);
            setIsAdminLoading(false);
-         })
-         .catch((err) => console.log(err.message));
+         });
      }
    }, [email]);
-    return [isAdmin, isAdminLoading];
+    return [isAdmins, isAdminLoading];
 };
 
 export default useAdmin;
