@@ -1,5 +1,8 @@
 import { createBrowserRouter, useParams } from "react-router-dom";
+import AddAProduct from "../Components/AddAProduct/AddAProduct";
+import MyBuyer from "../Components/MyBuyer/MyBuyer";
 import MyOrder from "../Components/MyOrder/MyOrder";
+import MyProduct from "../Components/MyProduct/MyProduct";
 import MyWishList from "../Components/MyWishList/MyWishList";
 import ProductLoader from "../Components/ProductLoader/ProductLoader";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
@@ -51,6 +54,18 @@ const router = createBrowserRouter([
       {
         path: "dashboard/myWishList",
         element: <MyWishList></MyWishList>,
+      },
+      {
+        path: "/dashboard/addAProduct",
+        element: <AddAProduct></AddAProduct>,
+      },
+      {
+        path: "/dashboard/myProduct",
+        element: <MyProduct></MyProduct>,
+      },
+      {
+        path: "/dashboard/myBuyers",
+        element:<MyBuyer></MyBuyer>
       },
     ],
   },
