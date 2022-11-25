@@ -14,10 +14,7 @@ const MyOrder = () => {
         res.json()
       ),
   });
-
-
-
-    
+  
 
 
     

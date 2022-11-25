@@ -33,7 +33,7 @@ const Modal = ({ modalData, setModalData }) => {
         console.log(data);
       })
       .catch((err) => console.log(err.message));
-    
+
     console.log(modalInfo);
 
     setModalData(null);
