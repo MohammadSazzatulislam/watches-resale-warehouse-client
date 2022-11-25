@@ -21,6 +21,7 @@ const Signup = () => {
         const user = userCredential.user;
         upDateUserProfile(data.name, data.photoURL)
           .then(() => {
+            userInfo(data.name, data.email, data.selectOption);
             console.log(user);
           })
           .catch((error) => {
@@ -34,7 +35,14 @@ const Signup = () => {
   };
 
 
-  const 
+  const userInfo = (name, email, option) => {
+    const users = {
+      userName: name,
+      userEmail: email,
+      selectOption: option
+    }
+    console.log(users);
+  }
 
 
 

@@ -1,5 +1,7 @@
 import { createBrowserRouter, useParams } from "react-router-dom";
+import MyOrder from "../Components/MyOrder/MyOrder";
 import ProductLoader from "../Components/ProductLoader/ProductLoader";
+import DashboardLayout from "../DashboardLayout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../page/Blog/Blog";
 import ErrorPage from "../page/ErrorPage/ErrorPage";
@@ -33,6 +35,17 @@ const router = createBrowserRouter([
       {
         path: "/allCategory/:name",
         element: <AllCategory></AllCategory>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    errorElement: <ErrorPage></ErrorPage>,
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "/dashboard/myOrders",
+        element: <MyOrder></MyOrder>,
       },
     ],
   },
