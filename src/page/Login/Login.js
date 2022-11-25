@@ -10,21 +10,20 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-    const { logInUser } = useContext(AuthContext);
-    const [logError, setLogError] = useState('')
+  const { logInUser } = useContext(AuthContext);
+  const [logError, setLogError] = useState("");
 
-    const handlelogin = (data) => {
-        setLogError('')
-      logInUser(data.email, data.password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-         console.log(user);
-        })
-        .catch((error) => {
-          setLogError(error.message)
-        });
-
+  const handlelogin = (data) => {
+    setLogError("");
+    logInUser(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        setLogError(error.message);
+      });
   };
 
   return (
@@ -66,7 +65,9 @@ const Login = () => {
                   placeholder="Password"
                 />
                 {errors.password && <span>{errors.password.message}</span>}
-                {logError && <span className="text-red-500 text-sm">{logError}</span>}
+                {logError && (
+                  <span className="text-red-500 text-sm">{logError}</span>
+                )}
               </div>
 
               <div className="flex justify-between items-center mb-6">

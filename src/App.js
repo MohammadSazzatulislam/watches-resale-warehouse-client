@@ -3,6 +3,7 @@ import { RouterProvider } from "react-router-dom";
 import router from './Route/Routes';
 
 function App() {
+
   return (
     <div className="max-w-[1440px] px-4 mx-auto border border-blue-400 ">
       <RouterProvider router={router}></RouterProvider>

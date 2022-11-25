@@ -14,7 +14,7 @@ const Products = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center  ">
+    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center justify-center gap-4 ">
       {data.map((category) => (
         <ProductsCard key={category._id} category={category}></ProductsCard>
       ))}

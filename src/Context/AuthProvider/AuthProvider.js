@@ -15,6 +15,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
+       const [show, setshow_modal_XIV] = useState(false);
 
   // create new user
   const createNewUser = (email, password) => {
@@ -60,6 +61,8 @@ const AuthProvider = ({ children }) => {
     logInUser,
     logOutUser,
     upDateUserProfile,
+    show,
+    setshow_modal_XIV,
   };
 
   return (

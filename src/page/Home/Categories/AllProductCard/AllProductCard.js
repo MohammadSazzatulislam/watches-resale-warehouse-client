@@ -1,20 +1,42 @@
 import React from "react";
 
-const AllProductCard = ({ product }) => {
+const AllProductCard = ({ product, setModalData }) => {
   return (
     <div className="flex justify-center">
-      <div className="block rounded-lg shadow-lg bg-white text-center">
-        <div className="">
-          <img src={product.img} alt="" />
+      <div className="block rounded-lg w-full shadow-lg bg-white text-center">
+        <div>
+          <img className="w-full h-[400px]" src={product.img} alt="" />
         </div>
-        <div className="p-6">
-          <h5 className="text-gray-900 text-xl font-medium mb-2">sdfgsdfg</h5>
-          <p className="text-gray-700 text-base mb-4">sdfgsdf</p>
-          <p className="text-gray-700 text-base mb-4">sdfgsdfg</p>
+        <div className="p-5">
+          <h5 className="text-gray-900 text-xl font-medium mb-2">
+            {product.productName}
+          </h5>
+          <div className="text-start">
+            <div className="flex justify-between items-center">
+              <p className="text-gray-700 font-semibold mb-4">
+                Orginal : {product.orginalPrice}
+              </p>
+              <p className="text-gray-700 font-semibold mb-4">
+                Sell : {product.resalePrice}
+              </p>
+            </div>
+            <p className="text-gray-700 font-semibold mb-4">
+              Use : {product.use}
+            </p>
+            <p className="text-gray-700 font-semibold mb-4">
+              Post : {product.post}
+            </p>
+            <p className="text-gray-700 font-semibold mb-4">
+              Seller Name : {product.sellerName}
+            </p>
+            <p className="text-gray-700 font-semibold mb-4">
+              Location : {product.location}
+            </p>
+          </div>
           <label
-            // onClick={() => handleModalInfo(product._id)}
+            onClick={() => setModalData(product)}
             type="button"
-            htmlFor="product-modal"
+            htmlFor="booking-modal"
             className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           >
             booking

@@ -1,4 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, useParams } from "react-router-dom";
+import ProductLoader from "../Components/ProductLoader/ProductLoader";
 import Main from "../Layout/Main";
 import Blog from "../page/Blog/Blog";
 import ErrorPage from "../page/ErrorPage/ErrorPage";
@@ -31,8 +32,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/allCategory/:name",
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.name}`),
         element: <AllCategory></AllCategory>,
       },
     ],
