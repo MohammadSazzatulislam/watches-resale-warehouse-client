@@ -15,8 +15,6 @@ const MyProduct = () => {
       ),
   });
     
-    console.log(data);
-
   if (isLoading) {
     return <Loading></Loading>;
   }

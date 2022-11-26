@@ -15,6 +15,14 @@ const MyProductCard = ({ product }) => {
           <div className="text-start">
             <div className="flex justify-between items-center">
               <p className="text-gray-700 font-semibold mb-4">
+                Stutas : {product.stutas}
+              </p>
+              <p className="text-gray-700 font-semibold mb-4">
+                verifyed
+              </p>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-gray-700 font-semibold mb-4">
                 Orginal : ${product.orginalPrice}
               </p>
               <p className="text-gray-700 font-semibold mb-4">
