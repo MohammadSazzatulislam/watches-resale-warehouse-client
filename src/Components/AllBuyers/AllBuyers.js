@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllBuyers = () => {
   const { user } = useContext(AuthContext);
@@ -12,6 +13,32 @@ const AllBuyers = () => {
       fetch("http://localhost:5000/users/buyers").then((res) => res.json()),
   });
 
+    const handleDelete = id => {
+         Swal.fire({
+           title: "Are you sure?",
+           text: "You won't be able to revert this!",
+           icon: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#3085d6",
+           cancelButtonColor: "#d33",
+           confirmButtonText: "Yes, delete it!",
+         }).then((result) => {
+           if (result.isConfirmed) {
+             fetch(`http://localhost:5000/users/buyers/${id}`, {
+               method: "DELETE",
+             })
+               .then((res) => res.json())
+               .then((data) => {
+                 if (data.acknowledged) {
+                   refetch();
+                 }
+                 console.log(data);
+               });
+
+             Swal.fire("Deleted!", "Your file has been deleted.", "success");
+           }
+         });
+    }
   
 
     
