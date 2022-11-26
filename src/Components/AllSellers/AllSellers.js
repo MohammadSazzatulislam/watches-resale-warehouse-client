@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
-
+import { FaCheck } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllSellers = () => {
@@ -36,6 +36,19 @@ const AllSellers = () => {
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }
     });
+  };
+
+  const handleVerify = (id) => {
+    fetch(`http://localhost:5000/verify/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          refetch();
+        }
+      });
   };
 
   if (isLoading) {
@@ -77,12 +90,17 @@ const AllSellers = () => {
                     </p>
                   </td>
 
-                  <td className="text-center">
-                    <button
-                      className="text-sm rounded  font-medium px-3 py-1 bg-red-400  leading-none text-white hover:text-red-500"
-                    >
-                      Verify
-                    </button>
+                  <td className="text-center flex justify-center items-center h-20  ">
+                    {seller.stutas === "verifyed" ? (
+                      <FaCheck className="bg-green-500 text-blue-100 p-1 h-8 w-8 rounded-full "></FaCheck>
+                    ) : (
+                      <button
+                        onClick={() => handleVerify(seller._id)}
+                        className="text-sm rounded  font-medium px-3 py-1 bg-red-400  leading-none text-white hover:text-red-500"
+                      >
+                        Verify
+                      </button>
+                    )}
                   </td>
                   <td className="text-center">
                     <button
