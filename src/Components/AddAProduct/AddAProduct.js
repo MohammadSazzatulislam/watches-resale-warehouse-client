@@ -1,19 +1,47 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import { useNavigate } from "react-router-dom";
 
 const AddAProduct = () => {
-
-    const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate()
 
+  const handleAdd = (data) => {
+    const addProduct = {
+      category: data.category,
+      productName: data.productName,
+      img: data.productImageURL,
+      orginalPrice: data.orginalPrice,
+      resalePrice: data.resalePrice,
+      used: data.used,
+      post: data.post,
+      sellerName: data.sellerName,
+      sellerNumber: data.sellerNumber,
+      description: data.description,
+      quality: data.quality,
+      location: data.location,
+    };
 
-  const handleBooked = (data) => { }
-
+    fetch("http://localhost:5000/addProduct", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          navigate("/dashboard/myProduct");
+        }
+        console.log(data);
+      });
+  };
 
   return (
     <div>
@@ -25,7 +53,7 @@ const AddAProduct = () => {
           >
             Products Info
           </h2>
-          <form onSubmit={handleSubmit(handleBooked)}>
+          <form onSubmit={handleSubmit(handleAdd)}>
             <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               <div className="flex flex-col">
                 <label className="mb-3 text-sm leading-none text-gray-800">
@@ -138,7 +166,7 @@ const AddAProduct = () => {
                   Seller Number
                 </label>
                 <input
-                  {...register("phone", { required: true })}
+                  {...register("sellerNumber", { required: true })}
                   type="text"
                   tabIndex={0}
                   aria-label="Enter first name"
@@ -189,7 +217,7 @@ const AddAProduct = () => {
             <input
               type="submit"
               className="inline-block mt-7 w-full px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-              value="Booke Now"
+              value="Add Now"
             />
           </form>
         </div>
