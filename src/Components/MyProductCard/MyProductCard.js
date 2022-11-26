@@ -17,14 +17,16 @@ const MyProductCard = ({ product, handleDelete }) => {
               <p className="text-gray-700 font-semibold">
                 Stutas : {product.stutas}
               </p>
-              {product.stutas === "In stock" && (
-                <div className="flex gap-2 justify-center items-center">
-                  <p className="text-gray-700 font-semibold ">verifyed</p>
-                  <button className="text-gray-700 cursor-pointer font-semibold px-3 py-1 rounded-full text-sm bg-yellow-300  ">
-                    Advertise
-                  </button>
-                </div>
-              )}
+              <div className="flex gap-2 justify-center items-center">
+                <p className="text-gray-700 font-semibold ">verifyed</p>
+                {product.stutas === "In stock" && (
+                  <>
+                    <button className="text-gray-700 cursor-pointer font-semibold px-3 py-1 rounded-full text-sm bg-yellow-300  ">
+                      Advertise
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-700 font-semibold mb-4">

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import MyProductCard from "../MyProductCard/MyProductCard";
+import Swal from "sweetalert2";
 
 const MyProduct = () => {
   const { user } = useContext(AuthContext);
@@ -10,46 +11,53 @@ const MyProduct = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/addProduct/${user?.email}`).then(
-        (res) => res.json()
+      fetch(`http://localhost:5000/addProduct/${user?.email}`).then((res) =>
+        res.json()
       ),
   });
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/addProduct/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              refetch();
+            }
+            console.log(data);
+          });
 
-  const handleDelete = id => {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
-    fetch(`http://localhost:5000/addProduct/${id}`, {
-      method : "DELETE"
-    })
-    .then(res=> res.json())
-      .then(data => {
-        if (data.acknowledged) {
-          refetch();
-        }
-      console.log(data);
-    })
-
-  }
-
-
-
-
-    
   if (isLoading) {
     return <Loading></Loading>;
   }
 
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
-        {data.map((product) => (
-          <MyProductCard
-            key={product._id}
-            handleDelete={handleDelete}
-            product={product}
-          ></MyProductCard>
-        ))}
-      </div>
-    );
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
+      {data.map((product) => (
+        <MyProductCard
+          key={product._id}
+          handleDelete={handleDelete}
+          product={product}
+        ></MyProductCard>
+      ))}
+    </div>
+  );
 };
 
 export default MyProduct;

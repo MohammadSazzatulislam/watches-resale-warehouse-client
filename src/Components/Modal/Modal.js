@@ -11,10 +11,11 @@ const Modal = ({ modalData, setModalData }) => {
 
   const { user } = useContext(AuthContext);
 
-  console.log(modalData)
+  console.log(modalData);
 
   const handleBooked = (data) => {
     const modalInfo = {
+      productId: modalData._id,
       category: modalData.category,
       productName: modalData?.productName,
       userName: data.name,
@@ -40,7 +41,6 @@ const Modal = ({ modalData, setModalData }) => {
 
     setModalData(null);
   };
-
 
   return (
     <div>

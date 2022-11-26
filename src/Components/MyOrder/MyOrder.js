@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyOrder = () => {
-
-    const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
@@ -14,9 +14,33 @@ const MyOrder = () => {
         res.json()
       ),
   });
-  
-   
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/product/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              refetch();
+            }
+            console.log(data);
+          });
+
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
   if (isLoading) {
     return <Loading></Loading>;
@@ -86,9 +110,12 @@ const MyOrder = () => {
                     </p>
                   </td>
                   <td className="text-center">
-                    <p className="text-sm font-medium leading-none text-gray-800">
-                      {order.location}
-                    </p>
+                    <button
+                      onClick={() => handleDelete(order.productId)}
+                      className="text-sm rounded  font-medium px-3 py-1 bg-red-400  leading-none text-white hover:text-red-500"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
