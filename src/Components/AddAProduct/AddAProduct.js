@@ -30,7 +30,7 @@ const {user} = useContext(AuthContext)
       description: data.description,
       quality: data.quality,
       location: data.location,
-      stutas : 'in stock'
+      stutas : 'In stock'
     };
 
     fetch("http://localhost:5000/addProduct", {

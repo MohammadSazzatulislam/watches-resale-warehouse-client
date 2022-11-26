@@ -14,6 +14,26 @@ const MyProduct = () => {
         (res) => res.json()
       ),
   });
+
+
+  const handleDelete = id => {
+
+    fetch(`http://localhost:5000/addProduct/${id}`, {
+      method : "DELETE"
+    })
+    .then(res=> res.json())
+      .then(data => {
+        if (data.acknowledged) {
+          refetch();
+        }
+      console.log(data);
+    })
+
+  }
+
+
+
+
     
   if (isLoading) {
     return <Loading></Loading>;
@@ -22,7 +42,11 @@ const MyProduct = () => {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
         {data.map((product) => (
-          <MyProductCard key={product._id} product={product}></MyProductCard>
+          <MyProductCard
+            key={product._id}
+            handleDelete={handleDelete}
+            product={product}
+          ></MyProductCard>
         ))}
       </div>
     );

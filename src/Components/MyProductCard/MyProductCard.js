@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyProductCard = ({ product }) => {
+const MyProductCard = ({ product, handleDelete }) => {
   console.log(product);
   return (
     <div className="flex justify-center">
@@ -13,13 +13,18 @@ const MyProductCard = ({ product }) => {
             {product.productName}
           </h5>
           <div className="text-start">
-            <div className="flex justify-between items-center">
-              <p className="text-gray-700 font-semibold mb-4">
+            <div className="flex justify-between items-centerv mb-4">
+              <p className="text-gray-700 font-semibold">
                 Stutas : {product.stutas}
               </p>
-              <p className="text-gray-700 font-semibold mb-4">
-                verifyed
-              </p>
+              {product.stutas === "In stock" && (
+                <div className="flex gap-2 justify-center items-center">
+                  <p className="text-gray-700 font-semibold ">verifyed</p>
+                  <button className="text-gray-700 cursor-pointer font-semibold px-3 py-1 rounded-full text-sm bg-yellow-300  ">
+                    Advertise
+                  </button>
+                </div>
+              )}
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-700 font-semibold mb-4">
@@ -48,22 +53,13 @@ const MyProductCard = ({ product }) => {
               Description : {product.description}
             </p>
           </div>
-          <div className="flex justify-between items-center">
-            <label
-              //   onClick={() => setModalData(product)}
-              type="button"
-              className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Edit
-            </label>
-            <label
-              //   onClick={() => setModalData(product)}
-              type="button"
-              className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-            >
-              Delete
-            </label>
-          </div>
+          <label
+            onClick={() => handleDelete(product._id)}
+            type="button"
+            className=" inline-block px-6 py-2.5 w-full bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >
+            Delete
+          </label>
         </div>
       </div>
     </div>
