@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const AddAProduct = () => {
+
+const {user} = useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
@@ -18,9 +22,10 @@ const AddAProduct = () => {
       img: data.productImageURL,
       orginalPrice: data.orginalPrice,
       resalePrice: data.resalePrice,
-      used: data.used,
+      use: data.used,
       post: data.post,
       sellerName: data.sellerName,
+      sellerEmail: data.sellerEmail,
       sellerNumber: data.sellerNumber,
       description: data.description,
       quality: data.quality,
@@ -172,6 +177,21 @@ const AddAProduct = () => {
                   aria-label="Enter first name"
                   className=" bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   placeholder="Seller Number"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="mb-3 text-sm leading-none text-gray-800">
+                  Seller Email
+                </label>
+                <input
+                  {...register("sellerEmail", { required: true })}
+                  type="text"
+                  tabIndex={0}
+                  defaultValue={user?.email}
+                  readOnly
+                  aria-label="Enter first name"
+                  className=" bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
+                  placeholder="Seller Email"
                 />
               </div>
               <div className="flex flex-col">
