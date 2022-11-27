@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCheck } from "react-icons/fa";
 
 const MyProductCard = ({ product, handleDelete }) => {
   console.log(product);
@@ -18,7 +19,9 @@ const MyProductCard = ({ product, handleDelete }) => {
                 Stutas : {product.stutas}
               </p>
               <div className="flex gap-2 justify-center items-center">
-                <p className="text-gray-700 font-semibold ">verifyed</p>
+                {product.verify === "verifyed" && (
+                  <FaCheck className="bg-green-500 text-blue-100 p-1 h-8 w-8 rounded-full "></FaCheck>
+                )}
                 {product.stutas === "In stock" && (
                   <>
                     <button className="text-gray-700 cursor-pointer font-semibold px-3 py-1 rounded-full text-sm bg-yellow-300  ">

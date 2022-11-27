@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCheck } from "react-icons/fa";
 
 const AllProductCard = ({ product, setModalData }) => {
   return (
@@ -16,7 +17,9 @@ const AllProductCard = ({ product, setModalData }) => {
               <p className="text-gray-700 font-semibold mb-4">
                 Stutas : {product.stutas}
               </p>
-              <p className="text-gray-700 font-semibold mb-4">Veryfied</p>
+              {product.verify === "verifyed" && (
+                <FaCheck className="bg-green-500 text-blue-100 p-1 h-8 w-8 rounded-full "></FaCheck>
+              )}
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-700 font-semibold mb-4">

@@ -38,8 +38,8 @@ const AllSellers = () => {
     });
   };
 
-  const handleVerify = (id) => {
-    fetch(`http://localhost:5000/verify/${id}`, {
+  const handleVerify = (email) => {
+    fetch(`http://localhost:5000/verify/${email}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -91,11 +91,11 @@ const AllSellers = () => {
                   </td>
 
                   <td className="text-center flex justify-center items-center h-20  ">
-                    {seller.stutas === "verifyed" ? (
+                    {seller.verify === "verifyed" ? (
                       <FaCheck className="bg-green-500 text-blue-100 p-1 h-8 w-8 rounded-full "></FaCheck>
                     ) : (
                       <button
-                        onClick={() => handleVerify(seller._id)}
+                        onClick={() => handleVerify(seller.email)}
                         className="text-sm rounded  font-medium px-3 py-1 bg-red-400  leading-none text-white hover:text-red-500"
                       >
                         Verify
