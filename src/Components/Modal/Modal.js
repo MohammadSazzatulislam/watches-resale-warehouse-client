@@ -37,13 +37,12 @@ const Modal = ({ modalData, setModalData }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.acknowladged) {
+        if (data.acknowledged) {
           toast.success("Successfully booked!");
+          setModalData(null);
         }
       })
       .catch((err) => console.log(err.message));
-
-    setModalData(null);
   };
 
   return (

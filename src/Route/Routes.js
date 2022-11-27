@@ -6,6 +6,7 @@ import MyBuyer from "../Components/MyBuyer/MyBuyer";
 import MyOrder from "../Components/MyOrder/MyOrder";
 import MyProduct from "../Components/MyProduct/MyProduct";
 import MyWishList from "../Components/MyWishList/MyWishList";
+import Payment from "../Components/Payment/Payment";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blog from "../page/Blog/Blog";
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
             <MyWishList></MyWishList>
           </BuyersRoute>
         ),
+      },
+      {
+        path: 'dashboard/payment/:id',
+        loader : async ({params}) => fetch(''),
+        element: <Payment></Payment>
       },
       {
         path: "/dashboard/addAProduct",

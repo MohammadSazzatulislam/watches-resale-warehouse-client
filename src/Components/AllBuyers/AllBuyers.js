@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 
 import Swal from "sweetalert2";
 
 const AllBuyers = () => {
+
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
