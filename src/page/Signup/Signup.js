@@ -2,6 +2,10 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
 
 const Signup = () => {
   const {
@@ -10,7 +14,8 @@ const Signup = () => {
     formState: { errors },
   } = useForm();
 
-  const { createNewUser, upDateUserProfile } = useContext(AuthContext);
+  const { createNewUser, upDateUserProfile, googleSignInUser } =
+    useContext(AuthContext);
   const [signError, setSignError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -42,6 +47,38 @@ const Signup = () => {
       name,
       email,
       option,
+    };
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(users),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate(from, { replace: true });
+      });
+  };
+
+  const handleGoogleSignUP = () => {
+    googleSignInUser(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        googleUserInfo(user?.displayName, user?.email);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const googleUserInfo = (name, email) => {
+    const users = {
+      name,
+      email,
+      option: "Buyers",
     };
 
     fetch("http://localhost:5000/users", {
@@ -177,23 +214,14 @@ const Signup = () => {
             <div className="flex flex-row items-center justify-center lg:justify-start">
               <p className="text-lg mb-0 mr-4">Sign in with</p>
               <button
+                onClick={handleGoogleSignUP}
                 type="button"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
                 className="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
               >
-                {/* <!-- Facebook --> */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                  className="w-4 h-4"
-                >
-                  {/* <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
-                  <path
-                    fill="currentColor"
-                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
-                  />
-                </svg>
+                {/* <!-- google --> */}
+                <FaGoogle></FaGoogle>
               </button>
             </div>
           </div>
