@@ -5,6 +5,7 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import useToken from "../../Hooks/useToken/useToken";
+import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -36,6 +37,7 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         setCreateLogEmail(user?.email);
+         toast.success("Successfully Log In !");
       })
       .catch((error) => {
         setLogError(error.message);
@@ -70,6 +72,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         setCreateLogEmail(email);
+          toast.success("Successfully Sign In !");
       });
   };
 

@@ -11,7 +11,11 @@ const AllCategory = () => {
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${name}`)
+    fetch(`http://localhost:5000/product/${name}`, {
+      headers: {
+        authorization: localStorage.getItem("watchToken"),
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);

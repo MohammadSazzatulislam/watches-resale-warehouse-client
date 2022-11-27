@@ -8,7 +8,11 @@ const AllBuyers = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch("http://localhost:5000/users/buyers").then((res) => res.json()),
+      fetch("http://localhost:5000/users/buyers", {
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -24,6 +28,9 @@ const AllBuyers = () => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/users/buyers/${id}`, {
           method: "DELETE",
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
         })
           .then((res) => res.json())
           .then((data) => {

@@ -10,9 +10,11 @@ const MyWishList = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/product?email=${user?.email}`).then((res) =>
-        res.json()
-      ),
+      fetch(`http://localhost:5000/product?email=${user?.email}`, {
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }).then((res) => res.json()),
   });
 
   if (isLoading) {

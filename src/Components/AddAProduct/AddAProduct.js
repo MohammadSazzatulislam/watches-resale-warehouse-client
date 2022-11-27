@@ -43,6 +43,7 @@ const AddAProduct = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: localStorage.getItem("watchToken"),
       },
       body: JSON.stringify(addProduct),
     })

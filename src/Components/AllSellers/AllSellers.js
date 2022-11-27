@@ -8,7 +8,11 @@ const AllSellers = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch("http://localhost:5000/users/sellers").then((res) => res.json()),
+      fetch("http://localhost:5000/users/sellers", {
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -24,6 +28,9 @@ const AllSellers = () => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/users/sellers/${id}`, {
           method: "DELETE",
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
         })
           .then((res) => res.json())
           .then((data) => {
@@ -41,6 +48,9 @@ const AllSellers = () => {
   const handleVerify = (email) => {
     fetch(`http://localhost:5000/verify/${email}`, {
       method: "PUT",
+      headers: {
+        authorization: localStorage.getItem("watchToken"),
+      },
     })
       .then((res) => res.json())
       .then((data) => {

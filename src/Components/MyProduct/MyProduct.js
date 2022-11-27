@@ -11,9 +11,11 @@ const MyProduct = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/addProduct/${user?.email}`).then((res) =>
-        res.json()
-      ),
+      fetch(`http://localhost:5000/addProduct/${user?.email}`, {
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -29,6 +31,9 @@ const MyProduct = () => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/addProduct/${id}`, {
           method: "DELETE",
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
         })
           .then((res) => res.json())
           .then((data) => {
