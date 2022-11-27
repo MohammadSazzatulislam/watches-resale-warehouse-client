@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../Hooks/useToken/useToken";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -17,9 +18,17 @@ const Signup = () => {
   const { createNewUser, upDateUserProfile, googleSignInUser } =
     useContext(AuthContext);
   const [signError, setSignError] = useState("");
+
+  const [createLogEmail, setCreateLogEmail] = useState("");
+  const [token] = useToken(createLogEmail);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleSignup = (data) => {
     setSignError("");
@@ -30,7 +39,6 @@ const Signup = () => {
         upDateUserProfile(data.name, data.photoURL)
           .then(() => {
             userInfo(data.name, data.email, data.selectOption);
-            console.log(user);
           })
           .catch((error) => {
             // An error occurred
@@ -58,8 +66,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        navigate(from, { replace: true });
+        setCreateLogEmail(email);
       });
   };
 
@@ -90,8 +97,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        navigate(from, { replace: true });
+        setCreateLogEmail(email);
       });
   };
 

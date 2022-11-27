@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
+import useToken from "../../Hooks/useToken/useToken";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -16,9 +17,17 @@ const Login = () => {
 
   const { logInUser, googleSignInUser } = useContext(AuthContext);
   const [logError, setLogError] = useState("");
+
+  const [createLogEmail, setCreateLogEmail] = useState("");
+  const [token] = useToken(createLogEmail);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handlelogin = (data) => {
     setLogError("");
@@ -26,8 +35,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate(from, { replace: true });
-        console.log(user);
+        setCreateLogEmail(user?.email);
       })
       .catch((error) => {
         setLogError(error.message);
@@ -61,8 +69,7 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        navigate(from, { replace: true });
+        setCreateLogEmail(email);
       });
   };
 

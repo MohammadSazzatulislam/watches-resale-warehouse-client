@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddAProduct = () => {
-
-const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date());
+  console.log(startDate);
 
   const {
     register,
@@ -13,7 +17,7 @@ const {user} = useContext(AuthContext)
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleAdd = (data) => {
     const addProduct = {
@@ -23,15 +27,17 @@ const {user} = useContext(AuthContext)
       orginalPrice: data.orginalPrice,
       resalePrice: data.resalePrice,
       use: data.used,
-      post: data.post,
+      post: startDate.date,
       sellerName: data.sellerName,
       sellerEmail: data.sellerEmail,
       sellerNumber: data.sellerNumber,
       description: data.description,
       quality: data.quality,
       location: data.location,
-      stutas : 'In stock'
+      stutas: "In stock",
     };
+
+    console.log(addProduct);
 
     fetch("http://localhost:5000/addProduct", {
       method: "POST",
@@ -43,6 +49,7 @@ const {user} = useContext(AuthContext)
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
+          toast.success("Successfully Added Product!");
           navigate("/dashboard/myProduct");
         }
         console.log(data);
@@ -145,14 +152,25 @@ const {user} = useContext(AuthContext)
                 <label className="mb-3 text-sm leading-none text-gray-800">
                   Product post Date
                 </label>
-                <input
+                <DatePicker
+                  selected={startDate}
+                  showTimeSelect
+                  dateFormat="PP"
+                  onChange={(date) => setStartDate(date)}
+                />
+                {/* <DatePicker
+                  {...register("post", { required: true })}
+                  selected={startdate}
+                  onChange={(date) => setStartDate(date)}
+                /> */}
+                {/* <input
                   {...register("post", { required: true })}
                   type="text"
                   tabIndex={0}
                   aria-label="Enter first name"
                   className=" bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
                   placeholder="Product Post Date"
-                />
+                /> */}
               </div>
               <div className="flex flex-col">
                 <label className="mb-3 text-sm leading-none text-gray-800">
