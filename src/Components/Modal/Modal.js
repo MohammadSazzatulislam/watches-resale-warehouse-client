@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Modal = ({ modalData, setModalData }) => {
@@ -36,6 +37,9 @@ const Modal = ({ modalData, setModalData }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.acknowladged) {
+          toast.success("Successfully booked!");
+        }
       })
       .catch((err) => console.log(err.message));
 

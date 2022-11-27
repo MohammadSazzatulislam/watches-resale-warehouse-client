@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Signup = () => {
@@ -12,6 +12,9 @@ const Signup = () => {
 
   const { createNewUser, upDateUserProfile } = useContext(AuthContext);
   const [signError, setSignError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignup = (data) => {
     setSignError("");
@@ -34,27 +37,26 @@ const Signup = () => {
       });
   };
 
-
   const userInfo = (name, email, option) => {
     const users = {
-      name, email , option
-    }
+      name,
+      email,
+      option,
+    };
 
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(users)
+      body: JSON.stringify(users),
     })
-      .then(res => res.json())
-    .then(data=> {
-      console.log(data);
-    })
-
-  }
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        navigate(from, { replace: true });
+      });
+  };
 
   return (
     <section className="h-[900px] lg:h-screen mb-20 md:h-[1000px]">

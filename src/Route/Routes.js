@@ -41,7 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/allCategory/:name",
-        element: <AllCategory></AllCategory>,
+        element: (
+          <PrivateRoute>
+            <AllCategory></AllCategory>
+          </PrivateRoute>
+        ),
       },
     ],
   },
