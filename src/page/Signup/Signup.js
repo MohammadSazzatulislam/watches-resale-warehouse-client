@@ -67,9 +67,8 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-
         setCreateLogEmail(email);
-        toast.success("Successfully Sign Up !")
+        toast.success("Successfully Sign Up !");
       });
   };
 
@@ -101,7 +100,7 @@ const Signup = () => {
       .then((res) => res.json())
       .then((data) => {
         setCreateLogEmail(email);
-         toast.success("Successfully Sign In !");
+        toast.success("Successfully Sign In !");
       });
   };
 

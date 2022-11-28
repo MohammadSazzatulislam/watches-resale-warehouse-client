@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../../Components/Loading/Loading";
 import Modal from "../../../../Components/Modal/Modal";
-import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import AllProductCard from "../AllProductCard/AllProductCard";
 
 const AllCategory = () => {

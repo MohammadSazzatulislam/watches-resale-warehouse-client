@@ -23,7 +23,6 @@ const CheckoutForm = ({ booking }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setClientSecret(data.clientSecret);
       })
       .catch((err) => console.log(err.message));

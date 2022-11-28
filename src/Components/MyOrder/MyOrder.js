@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
@@ -39,7 +39,6 @@ const MyOrder = () => {
             if (data.acknowledged) {
               refetch();
             }
-            console.log(data);
           });
 
         Swal.fire("Deleted!", "Your file has been deleted.", "success");

@@ -56,8 +56,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br />
-                        KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -69,8 +69,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br />
-                        KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -86,7 +86,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -98,8 +99,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br />
-                        KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -115,8 +116,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br />
-                        KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -128,8 +129,8 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 lg:pl-8 lg:pt-8 absolute left-5 top-10">
                       <h1 className="text-xl leading-5 lg:text-2xl lg:leading-normal font-medium text-white">
-                        WELCOME TO <br />
-                        KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                     </div>
                   </div>
@@ -206,11 +207,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:-pt-5  md:pl-8 absolute left-5 top-32">
                       <h1 className=" md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                        starting in the swiss mountains
                       </h2>
                     </div>
                   </div>
@@ -222,11 +223,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:pt-12 md:pl-8 absolute left-5 top-32">
                       <h1 className="md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                        starting in the swiss mountains
                       </h2>
                     </div>
                   </div>
@@ -242,11 +243,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:pt-12 md:pl-8 absolute left-5 top-32">
                       <h1 className="md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                        starting in the swiss mountains
                       </h2>
                     </div>
                   </div>
@@ -258,11 +259,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:pt-12 md:pl-8 absolute left-5 top-32">
                       <h1 className="md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                        starting in the swiss mountains
                       </h2>
                     </div>
                   </div>
@@ -278,11 +279,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:pt-12 md:pl-8 absolute left-5 top-32">
                       <h1 className="md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                        starting in the swiss mountains
                       </h2>
                     </div>
                   </div>
@@ -294,11 +295,11 @@ const Banner = () => {
                     />
                     <div className="pl-6 pt-6 md:pt-12 md:pl-8 absolute left-5 top-32">
                       <h1 className="md:text-2xl lg:text-5xl  font-medium text-white">
-                        WELCOME TO <br /> KARATE AND MARTIAL <br /> ARTS SCHOOL
+                        COLLECTION <br />
+                        NEW LUXURY WATCH
                       </h1>
                       <h2 className=" md:text-sm lg:text-lg mt-5 lg:leading-normal font-medium text-white">
-                        Karate is martial art and way of life that <br /> trains
-                        a practitioner to be peaceful.
+                       starting in the swiss mountains
                       </h2>
                     </div>
                   </div>

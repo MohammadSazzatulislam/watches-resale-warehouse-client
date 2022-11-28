@@ -4,7 +4,9 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useLoaderData } from "react-router-dom";
 import CheckoutForm from "../CheckOutForm/CheckOutForm";
 
-const stripePromise = loadStripe(process.env.SECRET_API_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51M6AleA0eu7K8wmEIEjjGIs1uXaNQ0GZUzVXwLyhG93R76Q9aRCztKXCJoVY80NvlivYezUcPIW3PjSomrWkatrE00I8V7vbbZ"
+);
 
 const Payment = () => {
   const booking = useLoaderData();

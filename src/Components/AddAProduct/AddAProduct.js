@@ -36,7 +36,6 @@ const AddAProduct = () => {
       stutas: "Available",
     };
 
-    console.log(addProduct);
 
     fetch("http://localhost:5000/addProduct", {
       method: "POST",
@@ -52,7 +51,6 @@ const AddAProduct = () => {
           toast.success("Successfully Added Product!");
           navigate("/dashboard/myProduct");
         }
-        console.log(data);
       });
   };
 

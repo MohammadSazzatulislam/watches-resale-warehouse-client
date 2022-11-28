@@ -2,7 +2,6 @@ import React from "react";
 import { FaCheck } from "react-icons/fa";
 
 const MyProductCard = ({ product, handleDelete }) => {
-  console.log(product);
   return (
     <div className="flex justify-center">
       <div className="block rounded-lg w-full shadow-lg bg-white text-center">

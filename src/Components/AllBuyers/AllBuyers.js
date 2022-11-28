@@ -6,7 +6,6 @@ import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
 
 const AllBuyers = () => {
-
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
@@ -39,7 +38,6 @@ const AllBuyers = () => {
             if (data.acknowledged) {
               refetch();
             }
-            console.log(data);
           });
 
         Swal.fire("Deleted!", "Your file has been deleted.", "success");

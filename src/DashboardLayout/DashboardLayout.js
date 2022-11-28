@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Header from "../Shared/Header/Header";
-import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 import Loading from "../Components/Loading/Loading";
 import useSeller from "../Hooks/useSeller/useSeller";
@@ -19,13 +18,14 @@ import {
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
 
-  const [isSeller, isSellerLoading] = useSeller(user?.email);
-  const [isBuyers, isBuyerLoading] = useBuyer(user?.email);
-  const [isAdmins, isAdminLoading] = useAdmin(user?.email);
+  const [isSeller, ] = useSeller(user?.email);
+  const [isBuyers, ] = useBuyer(user?.email);
+  const [isAdmins, ] = useAdmin(user?.email);
 
-  if (isSellerLoading || isBuyerLoading || isAdminLoading) {
-    return <Loading></Loading>;
+  if (!user) {
+   return <Loading></Loading>
   }
+
   return (
     <div>
       <Header></Header>
@@ -39,7 +39,7 @@ const DashboardLayout = () => {
           <Outlet></Outlet>
           <label
             htmlFor="dashboard-drawer"
-            className=" bg-blue-400 w-16  p-2 rounded-full border-none absolute bottom-0  right-5 drawer-button lg:hidden"
+            className=" bg-blue-400  w-16 flex justify-center items-center rounded-full border-none absolute bottom-0  right-5 drawer-button lg:hidden"
           >
             <FaShare></FaShare>
           </label>

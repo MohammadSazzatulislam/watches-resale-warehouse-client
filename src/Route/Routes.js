@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import AddAProduct from "../Components/AddAProduct/AddAProduct";
 import AllBuyers from "../Components/AllBuyers/AllBuyers";
 import AllSellers from "../Components/AllSellers/AllSellers";
-import MyBuyer from "../Components/MyBuyer/MyBuyer";
 import MyOrder from "../Components/MyOrder/MyOrder";
 import MyProduct from "../Components/MyProduct/MyProduct";
 import MyWishList from "../Components/MyWishList/MyWishList";

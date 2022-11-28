@@ -1,14 +1,14 @@
 # Watches Resale Warehouse
 
-live Website Link :- 
-live Website Link :- 
+live Website Link : https://watches-resale-warehouse.web.app/
+live Website Link : https://watches-resale-warehouse.firebaseapp.com/
 
 
 # Admin email and Password:
 
-adminEmail: 
+adminEmail: admin@gmail.com
 
-adminPassword:
+adminPassword: 123456
 
 
 

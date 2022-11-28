@@ -37,7 +37,7 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         setCreateLogEmail(user?.email);
-         toast.success("Successfully Log In !");
+        toast.success("Successfully Log In !");
       })
       .catch((error) => {
         setLogError(error.message);
@@ -72,7 +72,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         setCreateLogEmail(email);
-          toast.success("Successfully Sign In !");
+        toast.success("Successfully Sign In !");
       });
   };
 

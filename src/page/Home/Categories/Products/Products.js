@@ -7,7 +7,9 @@ const Products = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/category").then((res) => setData(res.data));
+    axios
+      .get("http://localhost:5000/category")
+      .then((res) => setData(res.data));
   }, [data]);
 
   if (!data) {

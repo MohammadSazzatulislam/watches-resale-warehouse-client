@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import { FaCheck } from "react-icons/fa";
@@ -38,7 +37,6 @@ const AllSellers = () => {
             if (data.acknowledged) {
               refetch();
             }
-            console.log(data);
           });
 
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -55,7 +53,6 @@ const AllSellers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           refetch();
         }
