@@ -17,11 +17,13 @@ const CheckoutForm = ({ booking }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("watchToken"),
       },
       body: JSON.stringify({ sellPrice }),
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setClientSecret(data.clientSecret);
       })
       .catch((err) => console.log(err.message));
@@ -81,6 +83,7 @@ const CheckoutForm = ({ booking }) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          authorization: localStorage.getItem("watchToken"),
         },
         body: JSON.stringify(payment),
       })

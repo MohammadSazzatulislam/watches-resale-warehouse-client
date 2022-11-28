@@ -1,17 +1,14 @@
+import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import CheckoutForm from "../CheckOutForm/CheckOutForm";
 
-const stripePromise = loadStripe(process.env.REACT_APP_PAYMENT_KEY);
-
+const stripePromise = loadStripe(process.env.SECRET_API_KEY);
 
 const Payment = () => {
   const booking = useLoaderData();
-  console.log(booking);
 
-  console.log(stripePromise)
   const { date, sellPrice, productName } = booking;
 
   return (
@@ -22,7 +19,7 @@ const Payment = () => {
       </p>
       <div className="w-96 h-52 mx-auto my-12 border p-3">
         <Elements stripe={stripePromise}>
-          <CheckoutForm  booking={booking} />
+          <CheckoutForm booking={booking} />
         </Elements>
       </div>
     </div>

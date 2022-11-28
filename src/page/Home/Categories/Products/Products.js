@@ -1,16 +1,16 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useState } from "react";
 import Loading from "../../../../Components/Loading/Loading";
 import ProductsCard from "../ProductsCard/ProductsCard";
+import axios from "axios";
 
 const Products = () => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () =>
-      fetch("http://localhost:5000/category").then((res) => res.json()),
-  });
+  const [data, setData] = useState([]);
 
-  if (isLoading) {
+  useEffect(() => {
+    axios.get("http://localhost:5000/category").then((res) => setData(res.data));
+  }, [data]);
+
+  if (!data) {
     return <Loading></Loading>;
   }
   return (
