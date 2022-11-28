@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/myOrders",
+        path: "/dashboard/myOrder",
         element: (
           <BuyersRoute>
             <MyOrder></MyOrder>
@@ -96,14 +96,6 @@ const router = createBrowserRouter([
         element: (
           <SellerRoute>
             <MyProduct></MyProduct>
-          </SellerRoute>
-        ),
-      },
-      {
-        path: "/dashboard/myBuyers",
-        element: (
-          <SellerRoute>
-            <MyBuyer></MyBuyer>
           </SellerRoute>
         ),
       },

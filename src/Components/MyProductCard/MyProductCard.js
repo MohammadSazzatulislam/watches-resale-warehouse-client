@@ -22,7 +22,7 @@ const MyProductCard = ({ product, handleDelete }) => {
                 {product.verify === "verifyed" && (
                   <FaCheck className="bg-green-500 text-blue-100 p-1 h-8 w-8 rounded-full "></FaCheck>
                 )}
-                {product.stutas === "In stock" && (
+                {product.stutas === "Available" && (
                   <>
                     <button className="text-gray-700 cursor-pointer font-semibold px-3 py-1 rounded-full text-sm bg-yellow-300  ">
                       Advertise

@@ -6,14 +6,14 @@ import useBuyer from "../../Hooks/useBuyer/useBuyer";
 
 const BuyersRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const [isAdmin, isAdminLoading] = useBuyer(user?.email);
+  const [isBuyers, isBuyerLoading] = useBuyer(user?.email);
   const location = useLocation();
 
-  if (loading || isAdminLoading) {
+  if (loading || isBuyerLoading) {
     return <Loading></Loading>;
   }
 
-  if (user?.uid && isAdmin) {
+  if (user?.uid && isBuyers) {
     return children;
   }
 

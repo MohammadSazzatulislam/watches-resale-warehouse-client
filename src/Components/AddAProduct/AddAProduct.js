@@ -34,7 +34,7 @@ const AddAProduct = () => {
       description: data.description,
       quality: data.quality,
       location: data.location,
-      stutas: "In stock",
+      stutas: "Available",
     };
 
     console.log(addProduct);

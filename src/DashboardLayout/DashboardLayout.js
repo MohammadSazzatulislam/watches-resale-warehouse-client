@@ -7,81 +7,100 @@ import Loading from "../Components/Loading/Loading";
 import useSeller from "../Hooks/useSeller/useSeller";
 import useBuyer from "../Hooks/useBuyer/useBuyer";
 import useAdmin from "../Hooks/useAdmin/useAdmin";
+import {
+  FaPlus,
+  FaDollarSign,
+  FaShoppingCart,
+  FaShapes,
+  FaUserFriends,
+  FaShare,
+} from "react-icons/fa";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
 
   const [isSeller, isSellerLoading] = useSeller(user?.email);
   const [isBuyers, isBuyerLoading] = useBuyer(user?.email);
-  const[isAdmins, isAdminLoading] = useAdmin(user?.email);
-
+  const [isAdmins, isAdminLoading] = useAdmin(user?.email);
 
   if (isSellerLoading || isBuyerLoading || isAdminLoading) {
     return <Loading></Loading>;
   }
-    return (
-      <div>
-        <Header></Header>
-        <div className="drawer drawer-mobile">
-          <input
-            id="dashboard-drawer"
-            type="checkbox"
-            className="drawer-toggle"
-          />
-          <div className="drawer-content">
-            <Outlet></Outlet>
-            <label
-              htmlFor="dashboard-drawer"
-              className="btn btn-primary absolute bottom-0  right-5 drawer-button lg:hidden"
-            >
-              Open drawer
-            </label>
-          </div>
-          <div className="drawer-side">
-            <label
-              htmlFor="dashboard-drawer"
-              className="drawer-overlay"
-            ></label>
-            <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-              {/* <!-- Sidebar content here --> */}
-              {isBuyers && (
-                <>
-                  <li>
-                    <Link to="/dashboard/myOrders">My Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/myWishList">My WishList</Link>
-                  </li>
-                </>
-              )}
-              {isSeller && (
-                <>
-                  <li>
-                    <Link to="/dashboard/myProduct">My Product</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/addAProduct">Add a Product</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/myBuyers">My Buyer</Link>
-                  </li>
-                </>
-              )}
-              {isAdmins && (
-                <>
-                  <li>
-                    <Link to="/dashboard/allBuyers">All Buyers</Link>
-                  </li>
-                  <li>
-                    <Link to="/dashboard/allSellers">All Sellers</Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+  return (
+    <div>
+      <Header></Header>
+      <div className="drawer drawer-mobile">
+        <input
+          id="dashboard-drawer"
+          type="checkbox"
+          className="drawer-toggle"
+        />
+        <div className="drawer-content">
+          <Outlet></Outlet>
+          <label
+            htmlFor="dashboard-drawer"
+            className=" bg-blue-400 w-16  p-2 rounded-full border-none absolute bottom-0  right-5 drawer-button lg:hidden"
+          >
+            <FaShare></FaShare>
+          </label>
+        </div>
+        <div className="drawer-side">
+          <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
+          <ul className="menu p-3 w-80 bg-white shadow-lg ">
+            {/* <!-- Sidebar content here --> */}
+            {isBuyers && (
+              <>
+                <li >
+                  <Link to="/dashboard/myOrder">
+                    <FaShoppingCart></FaShoppingCart>
+                    <span>My Orders</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/myWishList">
+                    <FaDollarSign></FaDollarSign>
+                    <span>My WishList</span>
+                  </Link>
+                </li>
+              </>
+            )}
+            {isSeller && (
+              <>
+                <li >
+                  <Link to="/dashboard/myProduct">
+                    <FaShapes></FaShapes>
+                    <span>My Product</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addAProduct">
+                    <FaPlus></FaPlus>
+                    <span>Add a Product</span>
+                  </Link>
+                </li>
+              </>
+            )}
+            {isAdmins && (
+              <>
+                <li>
+                  <Link to="/dashboard/allBuyers">
+                    <FaUserFriends></FaUserFriends>
+                    <span>All Buyers</span>
+                  </Link>
+                </li>
+                <li >
+                  <Link to="/dashboard/allSellers">
+                    <FaUserFriends></FaUserFriends>
+                    <span>All Sellers</span>
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default DashboardLayout;
