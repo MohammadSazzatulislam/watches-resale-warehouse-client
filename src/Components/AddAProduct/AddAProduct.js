@@ -9,7 +9,6 @@ import "react-datepicker/dist/react-datepicker.css";
 const AddAProduct = () => {
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date());
-  console.log(startDate);
 
   const {
     register,
@@ -27,7 +26,7 @@ const AddAProduct = () => {
       orginalPrice: data.orginalPrice,
       resalePrice: data.resalePrice,
       use: data.used,
-      post: startDate.date,
+      post: startDate,
       sellerName: data.sellerName,
       sellerEmail: data.sellerEmail,
       sellerNumber: data.sellerNumber,
@@ -155,23 +154,8 @@ const AddAProduct = () => {
                 </label>
                 <DatePicker
                   selected={startDate}
-                  showTimeSelect
-                  dateFormat="PP"
                   onChange={(date) => setStartDate(date)}
                 />
-                {/* <DatePicker
-                  {...register("post", { required: true })}
-                  selected={startdate}
-                  onChange={(date) => setStartDate(date)}
-                /> */}
-                {/* <input
-                  {...register("post", { required: true })}
-                  type="text"
-                  tabIndex={0}
-                  aria-label="Enter first name"
-                  className=" bg-gray-100 text-sm font-medium leading-none text-gray-800 p-3 border rounded border-gray-200"
-                  placeholder="Product Post Date"
-                /> */}
               </div>
               <div className="flex flex-col">
                 <label className="mb-3 text-sm leading-none text-gray-800">
