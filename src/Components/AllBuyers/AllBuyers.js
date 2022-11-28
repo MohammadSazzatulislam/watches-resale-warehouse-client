@@ -9,7 +9,7 @@ const AllBuyers = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch("http://localhost:5000/users/buyers", {
+      fetch("https://watches-resale-warehouse-server.vercel.app/users/buyers", {
         headers: {
           authorization: localStorage.getItem("watchToken"),
         },
@@ -27,12 +27,15 @@ const AllBuyers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/buyers/${id}`, {
-          method: "DELETE",
-          headers: {
-            authorization: localStorage.getItem("watchToken"),
-          },
-        })
+        fetch(
+          `https://watches-resale-warehouse-server.vercel.app/users/buyers/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              authorization: localStorage.getItem("watchToken"),
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {

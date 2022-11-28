@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../../../../Components/Loading/Loading";
 import Modal from "../../../../Components/Modal/Modal";
@@ -10,11 +10,14 @@ const AllCategory = () => {
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/product/${name}`, {
-      headers: {
-        authorization: localStorage.getItem("watchToken"),
-      },
-    })
+    fetch(
+      `https://watches-resale-warehouse-server.vercel.app/product/${name}`,
+      {
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);

@@ -10,11 +10,14 @@ const MyOrder = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/product?email=${user?.email}`, {
-        headers: {
-          authorization: localStorage.getItem("watchToken"),
-        },
-      }).then((res) => res.json()),
+      fetch(
+        `https://watches-resale-warehouse-server.vercel.app/product?email=${user?.email}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
+        }
+      ).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -28,12 +31,15 @@ const MyOrder = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product/${id}`, {
-          method: "DELETE",
-          headers: {
-            authorization: localStorage.getItem("watchToken"),
-          },
-        })
+        fetch(
+          `https://watches-resale-warehouse-server.vercel.app/product/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              authorization: localStorage.getItem("watchToken"),
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {

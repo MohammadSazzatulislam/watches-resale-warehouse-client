@@ -58,7 +58,7 @@ const Signup = () => {
       option,
     };
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://watches-resale-warehouse-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -90,7 +90,7 @@ const Signup = () => {
       option: "Buyers",
     };
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://watches-resale-warehouse-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

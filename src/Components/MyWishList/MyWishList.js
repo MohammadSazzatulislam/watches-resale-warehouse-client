@@ -10,11 +10,14 @@ const MyWishList = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/product?email=${user?.email}`, {
-        headers: {
-          authorization: localStorage.getItem("watchToken"),
-        },
-      }).then((res) => res.json()),
+      fetch(
+        `https://watches-resale-warehouse-server.vercel.app/product?email=${user?.email}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
+        }
+      ).then((res) => res.json()),
   });
 
   if (isLoading) {

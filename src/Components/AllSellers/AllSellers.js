@@ -8,11 +8,14 @@ const AllSellers = () => {
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ["repoData"],
     queryFn: () =>
-      fetch("http://localhost:5000/users/sellers", {
-        headers: {
-          authorization: localStorage.getItem("watchToken"),
-        },
-      }).then((res) => res.json()),
+      fetch(
+        "https://watches-resale-warehouse-server.vercel.app/users/sellers",
+        {
+          headers: {
+            authorization: localStorage.getItem("watchToken"),
+          },
+        }
+      ).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
@@ -26,12 +29,15 @@ const AllSellers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/sellers/${id}`, {
-          method: "DELETE",
-          headers: {
-            authorization: localStorage.getItem("watchToken"),
-          },
-        })
+        fetch(
+          `https://watches-resale-warehouse-server.vercel.app/users/sellers/${id}`,
+          {
+            method: "DELETE",
+            headers: {
+              authorization: localStorage.getItem("watchToken"),
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.acknowledged) {
@@ -45,12 +51,15 @@ const AllSellers = () => {
   };
 
   const handleVerify = (email) => {
-    fetch(`http://localhost:5000/verify/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: localStorage.getItem("watchToken"),
-      },
-    })
+    fetch(
+      `https://watches-resale-warehouse-server.vercel.app/verify/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: localStorage.getItem("watchToken"),
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

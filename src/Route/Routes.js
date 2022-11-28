@@ -79,7 +79,9 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/payment/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(
+            `https://watches-resale-warehouse-server.vercel.app/products/${params.id}`
+          ),
         element: <Payment></Payment>,
       },
       {

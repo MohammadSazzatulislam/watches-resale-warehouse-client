@@ -13,14 +13,17 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("watchToken"),
-      },
-      body: JSON.stringify({ sellPrice }),
-    })
+    fetch(
+      "https://watches-resale-warehouse-server.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("watchToken"),
+        },
+        body: JSON.stringify({ sellPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setClientSecret(data.clientSecret);
@@ -78,7 +81,7 @@ const CheckoutForm = ({ booking }) => {
         transactionId: paymentIntent.id,
       };
 
-      fetch("http://localhost:5000/payments", {
+      fetch("https://watches-resale-warehouse-server.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

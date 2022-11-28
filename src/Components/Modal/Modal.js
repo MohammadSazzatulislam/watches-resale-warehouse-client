@@ -24,7 +24,7 @@ const Modal = ({ modalData, setModalData }) => {
       location: data.location,
     };
 
-    fetch("http://localhost:5000/product", {
+    fetch("https://watches-resale-warehouse-server.vercel.app/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

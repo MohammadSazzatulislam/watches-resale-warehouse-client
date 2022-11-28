@@ -8,7 +8,7 @@ const Products = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/category")
+      .get("https://watches-resale-warehouse-server.vercel.app/category")
       .then((res) => setData(res.data));
   }, [data]);
 

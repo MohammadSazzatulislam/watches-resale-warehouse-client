@@ -36,8 +36,7 @@ const AddAProduct = () => {
       stutas: "Available",
     };
 
-
-    fetch("http://localhost:5000/addProduct", {
+    fetch("https://watches-resale-warehouse-server.vercel.app/addProduct", {
       method: "POST",
       headers: {
         "content-type": "application/json",
