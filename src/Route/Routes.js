@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "dashboard/myWishList",
+        path: "/dashboard/myWishList",
         element: (
           <BuyersRoute>
             <MyWishList></MyWishList>
@@ -78,9 +78,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'dashboard/payment/:id',
-        loader : async ({params}) => fetch(''),
-        element: <Payment></Payment>
+        path: "/dashboard/payment/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+        element: <Payment></Payment>,
       },
       {
         path: "/dashboard/addAProduct",

@@ -22,25 +22,29 @@ const AllCategory = () => {
       });
   }, [name, modalData]);
 
-
-    if (!allProducts) {
-      return <Loading></Loading>;
-    }
+  if (!allProducts) {
+    return <Loading></Loading>;
+  }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4">
-      {allProducts?.map((product) => (
-        <AllProductCard
-          setModalData={setModalData}
-          key={product._id}
-          product={product}
-        ></AllProductCard>
-      ))}
-      {allProducts && modalData && (
-        <>
-          <Modal modalData={modalData} setModalData={setModalData}></Modal>
-        </>
-      )}
+    <div className="my-28">
+      <div>
+        <h1 className="lg:text-3xl font-bold  text-2xl border-l-8 border-l-blue-800 mb-28">Our <br /> Letest Products</h1>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4">
+        {allProducts?.map((product) => (
+          <AllProductCard
+            setModalData={setModalData}
+            key={product._id}
+            product={product}
+          ></AllProductCard>
+        ))}
+        {allProducts && modalData && (
+          <>
+            <Modal modalData={modalData} setModalData={setModalData}></Modal>
+          </>
+        )}
+      </div>
     </div>
   );
 };

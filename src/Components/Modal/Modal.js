@@ -12,8 +12,6 @@ const Modal = ({ modalData, setModalData }) => {
 
   const { user } = useContext(AuthContext);
 
-  console.log(modalData);
-
   const handleBooked = (data) => {
     const modalInfo = {
       productId: modalData._id,
@@ -24,10 +22,9 @@ const Modal = ({ modalData, setModalData }) => {
       sellPrice: data.price,
       phone: data.phone,
       location: data.location,
-      stutas: "stock out",
     };
 
-    fetch(`http://localhost:5000/product/${modalData._id}`, {
+    fetch("http://localhost:5000/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,10 +33,11 @@ const Modal = ({ modalData, setModalData }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.acknowledged) {
           toast.success("Successfully booked!");
           setModalData(null);
+        } else {
+          toast.error(data.message);
         }
       })
       .catch((err) => console.log(err.message));

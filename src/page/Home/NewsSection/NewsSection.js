@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsSection = () => {
     return (
-       <div className="xl:flex items-center w-full mx-auto my-28  2xl:mx-auto 2xl:container">
+       <div className="xl:flex items-center w-full mx-auto mb-28  2xl:mx-auto 2xl:container">
             <div className=" lg:p-12 p-9 2xl:w-8/12 xl:w-11/12 w-full  sm:border-2 sm:border-gray-800">
                 <h1 className="text-4xl font-semibold leading-9 text-gray-800">Subscribe</h1>
                 <p className="text-base leading-4 mt-2 text-gray-600">Subscribe to our newsletter to get news about latest Watch</p>

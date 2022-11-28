@@ -110,9 +110,14 @@ const MyOrder = () => {
                     </p>
                   </td>
                   <td className="text-center">
-                    <p className="text-sm font-medium leading-none text-gray-800">
-                      {order.location}
-                    </p>
+                    {order.price && !order.paid && (
+                      <p className="text-sm font-medium leading-none text-gray-800">
+                        Un Paid
+                      </p>
+                    )}
+                    {order.price && order.paid && (
+                      <p className="text-green-500 font-semibold">Paid</p>
+                    )}
                   </td>
                   <td className="text-center">
                     <button

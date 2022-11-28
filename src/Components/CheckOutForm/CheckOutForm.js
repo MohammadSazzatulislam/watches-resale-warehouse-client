@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
-const CheckoutForm = ({ booking, clientSecret }) => {
+const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+  const { sellPrice, userName, userEmail } = booking;
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sellPrice }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setClientSecret(data.clientSecret);
+      })
+      .catch((err) => console.log(err.message));
+  }, [sellPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,8 +58,8 @@ const CheckoutForm = ({ booking, clientSecret }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: booking.name,
-            email: booking.email,
+            name: userName,
+            email: userEmail,
           },
         },
       }
@@ -54,8 +72,8 @@ const CheckoutForm = ({ booking, clientSecret }) => {
     if (paymentIntent.status === "succeeded") {
       const payment = {
         bookingId: booking._id,
-        price: booking.price,
-        email: booking.email,
+        price: booking.sellPrice,
+        email: booking.userEmail,
         transactionId: paymentIntent.id,
       };
 
@@ -63,7 +81,6 @@ const CheckoutForm = ({ booking, clientSecret }) => {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          authorization: localStorage.getItem("watchToken"),
         },
         body: JSON.stringify(payment),
       })
